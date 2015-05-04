@@ -10,6 +10,15 @@ var settings = require('./settings');
 var flash = require('connect-flash');
 
 var app = express();
+var multer = require('multer');
+app.use(multer({
+    dest: './public/images',
+    rename:function (fieldname,filename){
+        return filename;
+    }
+}))
+
+
 
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
